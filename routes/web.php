@@ -26,13 +26,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/redirect', [App\Http\Controllers\Auth\RedirectAuthController::class, 'redirect'])->name('redirect');
 
 
 Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
+
+    Route::get('/home/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
+
 
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);

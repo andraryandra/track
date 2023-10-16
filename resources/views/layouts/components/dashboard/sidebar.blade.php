@@ -13,7 +13,8 @@
     <ul class="metismenu" id="menu">
 
         <li>
-            <a href="#" class="">
+            <a href="{{ route('dashboard.admin') }}"
+                class="{{ $active == 'dashboard' ? 'active-menu mm-active text-primary' : '' }}">
                 <div class="parent-icon"><i class="bi bi-house-fill"></i></div>
                 <div class="menu-title">Dashboard</div>
             </a>
