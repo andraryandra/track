@@ -12,5 +12,6 @@ class CategorySurvey extends Model
     protected $fillable = [
         'name',
         'description',
+        'icon',
     ];
 }

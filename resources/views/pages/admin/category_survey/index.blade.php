@@ -52,6 +52,7 @@
                             <th scope="col">No</th>
                             <th scope="col">Nama Kategori</th>
                             <th scope="col">Deskripsi</th>
+                            <th scope="col">icon</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -65,6 +66,9 @@
                                 <td>{{ $Categories->name }}</td>
                                 <td>{{ $Categories->description }}</td>
                                 <td>
+                                    <img src="{{ asset($Categories->icon) }}" alt="Icon Kategori" width="40">
+                                </td>
+                                <td>
                                     @can('users-edit')
                                         <a href="#" class="text-warning mx-1" data-bs-toggle="modal"
                                             data-bs-placement="bottom" title="Edit"
@@ -77,9 +81,9 @@
                                             class="text-danger mx-5" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                             title="Hapus"
                                             onclick="event.preventDefault();
-                                                     if (confirm('Anda yakin ingin menghapus?')) {
-                                                         document.getElementById('delete-form-{{ $Categories->id }}').submit();
-                                                     }">
+                                                    if (confirm('Anda yakin ingin menghapus?')) {
+                                                        document.getElementById('delete-form-{{ $Categories->id }}').submit();
+                                                    }">
                                             <i class="bi bi-trash-fill"></i>
                                         </a>
                                         <form id="delete-form-{{ $Categories->id }}"
@@ -89,11 +93,6 @@
                                             @method('DELETE')
                                         </form>
                                     @endcan
-                                    {{-- <a href="{{ route('dashboard.category.destroy', $Categories->id) }}"
-                                        class="btn btn-danger"
-                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete
-                                    </a> --}}
-                                    {{-- <a href="#" class="btn btn-danger">Delete</a> --}}
                                 </td>
                             </tr>
                         @empty
@@ -118,12 +117,21 @@
                 <form action="{{ route('dashboard.category.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
-                        <label for="name" class="col-form-label">Nama Kategori:</label>
-                        <input class="form-control" name="name" type="text" id="name"
-                            value="{{ old('name') }}" placeholder="Masukkan Nama kategori survey" required>
-
-                        <label for="description" class="col-form-label">Deskripsi Kategori:</label>
-                        <textarea class="form-control" name="description" id="description" placeholder="Masukkan deskripsi kategori" required>{{ old('description') }}</textarea>
+                        <div class="my-2">
+                            <label for="name" class="col-form-label">Nama Kategori:</label>
+                            <input class="form-control" name="name" type="text" id="name"
+                                value="{{ old('name') }}" placeholder="Masukkan Nama kategori survey" required>
+                        </div>
+                        <div class="my-2">
+                            <label for="icon" class="col-form-label">Gambar Kategori:</label>
+                            <input class="form-control" name="icon" type="file" id="icon" accept="image/*"
+                                required>
+                        </div>
+                        <div class="my-2">
+                            <label for="description" class="col-form-label">Deskripsi Kategori:</label>
+                            <textarea class="form-control" name="description" id="description" placeholder="Masukkan deskripsi kategori"
+                                required>{{ old('description') }}</textarea>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary bg-primary">Save changes</button>
@@ -135,25 +143,35 @@
 
     <!-- Modal edit data-->
     @foreach ($Categori as $Categories)
-        <div class="modal fade" id="staticBackdrop{{ $Categories->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
-            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="staticBackdrop{{ $Categories->id }}" data-bs-backdrop="static"
+            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Edit data</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ route('dashboard.category.update', $Categories->id) }}" method="POST">
+                    {{-- <form action="{{ route('dashboard.category.store') }}" method="POST" enctype="multipart/form-data"> --}}
+                    <form action="{{ route('dashboard.category.update', $Categories->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
-                            <label for="name" class="col-form-label">Nama Kategori:</label>
-                            <input class="form-control" name="name" type="text" id="name"
-                                value="{{ $Categories->name }}" placeholder="Masukkan Nama kategori survey" required>
-
-                            <label for="description" class="col-form-label">Deskripsi Kategori:</label>
-                            <textarea class="form-control" name="description" id="description" placeholder="Masukkan deskripsi kategori"
-                                required>{{ $Categories->description }}</textarea>
+                            <div class="my-2">
+                                <label for="name" class="col-form-label">Nama Kategori:</label>
+                                <input class="form-control" name="name" type="text" id="name"
+                                    value="{{ $Categories->name }}" placeholder="Masukkan Nama kategori survey" required>
+                            </div>
+                            <div class="my-2">
+                                <label for="icon" class="col-form-label">Gambar Kategori:</label>
+                                <input class="form-control" name="icon" type="file" id="icon"
+                                    accept="image/*" required>
+                            </div>
+                            <div class="my-2">
+                                <label for="description" class="col-form-label">Deskripsi Kategori:</label>
+                                <textarea class="form-control" name="description" id="description" placeholder="Masukkan deskripsi kategori"
+                                    required>{{ $Categories->description }}</textarea>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary bg-primary">Save changes</button>

@@ -41,22 +41,35 @@ class CategorySurveyController extends Controller
      */
     public function store(Request $request)
     {
-        if (Gate::denies('category-list')) {
-            abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
-        }
+        // dd("oke");
+        // dd($request->all());
         $request->validate([
             'name' => 'required',
             'description' => 'required',
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
+
+        // dd($request);
+
         try {
             $validatedData = $request->except('_token');
+
+            // Menyimpan gambar (icon)
+            if ($request->hasFile('icon')) {
+                $icon = $request->file('icon');
+                $iconName = time() . '.' . $icon->getClientOriginalExtension();
+                $icon->move(public_path('uploads/icons'), $iconName); // Simpan gambar ke direktori tertentu
+                $validatedData['icon'] = 'uploads/icons/' . $iconName; // Simpan path gambar ke dalam kolom 'icon'
+            }
+
             CategorySurvey::create($validatedData);
             return redirect()->back()->with('success', 'Data kategori ditambah.');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Data kategori ditambah.');
+            return redirect()->back()->with('error', 'Data kategori gagal ditambah.');
         }
-        return redirect()->back()->with('success', 'Data kategori ditambah.');
     }
+
+
 
     /**
      * Display the resource.
@@ -79,26 +92,54 @@ class CategorySurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (Gate::denies('category-list')) {
-            abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
-        }
+        $category = CategorySurvey::findOrFail($id);
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',
+            'icon' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
 
         try {
-            $category = CategorySurvey::findOrFail($id);
-            $category->update([
-                'name' => $request->name,
-                'description' => $request->description,
-            ]);
+            $validatedData = $request->except('_token');
 
-            return redirect()->back()->with('success', 'Data Kategori berhasil diperbaharui');
+            // Mengupdate gambar (icon) jika ada perubahan
+            if ($request->hasFile('icon')) {
+                $icon = $request->file('icon');
+                $iconName = time() . '.' . $icon->getClientOriginalExtension();
+                $icon->move(public_path('uploads/icons'), $iconName); // Simpan gambar ke direktori tertentu
+                $validatedData['icon'] = 'uploads/icons/' . $iconName; // Simpan path gambar ke dalam kolom 'icon'
+            }
+
+            $category->update($validatedData);
+            return redirect()->back()->with('success', 'Data kategori diperbarui.');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Data Kategori gagal diperbaharui');
+            return redirect()->back()->with('error', 'Data kategori gagal diperbarui.');
         }
     }
+
+    // public function update(Request $request, $id)
+    // {
+    //     if (Gate::denies('category-list')) {
+    //         abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
+    //     }
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'description' => 'required',
+    //     ]);
+
+    //     try {
+    //         $category = CategorySurvey::findOrFail($id);
+    //         $category->update([
+    //             'name' => $request->name,
+    //             'description' => $request->description,
+    //         ]);
+
+    //         return redirect()->back()->with('success', 'Data Kategori berhasil diperbaharui');
+    //     } catch (\Throwable $th) {
+    //         return redirect()->back()->with('error', 'Data Kategori gagal diperbaharui');
+    //     }
+    // }
 
 
     /**
