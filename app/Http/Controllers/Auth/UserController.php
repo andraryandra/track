@@ -35,7 +35,7 @@ class UserController extends Controller
 
         $data = User::latest()->paginate(5);
 
-        return view('pages.admin.menu_user.index', [
+        return view('pages.admin.menu_user.all_user.index', [
             'data' => $data,
             'active' => 'users'
         ])->with('i', ($request->input('page', 1) - 1) * 5);

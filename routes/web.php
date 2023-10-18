@@ -59,4 +59,15 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
         Route::put('/survey/{id}', 'update')->name('survey.update');
         Route::get('/survey/delete/{id}', 'destroy')->name('survey.destroy');
     });
+
+    //User Location
+    Route::controller(\App\Http\Controllers\Web\User_Location\UserLocationController::class)->group(function () {
+        Route::get('user_location', 'index')->name('user_location.index');
+        Route::get('user_location/create', 'create')->name('user_location.create');
+        Route::post('user_location/store', 'store')->name('user_location.store');
+        Route::get('user_location/{id}', 'show')->name('user_location.show');
+        Route::get('user_location/{id}/edit', 'edit')->name('user_location.edit');
+        Route::put('user_location/{id}', 'update')->name('user_location.update');
+        Route::delete('user_location/delete/{id}', 'destroy')->name('user_location.destroy');
+    });
 });

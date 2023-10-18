@@ -2,29 +2,6 @@
 
 
 @section('admin')
-    <!--breadcrumb-->
-    {{-- <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Tabel All User</div>
-        <div class="ps-3">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0 p-0">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard.admin') }}"><i class="bx bx-home-alt"></i></a>
-                    </li>
-                    @if (isset($breadcumb['links']))
-                        @foreach ($breadcumb['links'] as $link)
-                            <li class="breadcrumb-item">
-                                <a href="{{ $link['url'] }}">{{ $link['name'] }}</a>
-                            </li>
-                        @endforeach
-                    @endif
-                    @if (isset($breadcumb['current']))
-                        <li class="breadcrumb-item active" aria-current="page">{{ $breadcumb['current'] }}</li>
-                    @endif
-                </ol>
-            </nav>
-        </div>
-    </div> --}}
-    <!--end breadcrumb-->
     <div class="card">
         <div class="card-body">
             <div class="row align-items-center">

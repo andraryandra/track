@@ -40,13 +40,20 @@
                     <div class="menu-title">User</div>
                 </a>
                 <ul>
-                    <li> <a href="{{ route('dashboard.users.index') }}"
+                    <li>
+                        <a href="{{ route('dashboard.users.index') }}"
                             class="{{ $active == 'users' ? 'active-menu mm-active text-primary' : '' }}"><i
                                 class="bi bi-circle"></i>All User</a>
                     </li>
-                    <li> <a href="{{ url('#') }}"><i class="bi bi-circle"></i>User Admin</a>
+                    <li>
+                        <a href="{{ url('#') }}"><i class="bi bi-circle"></i>User Admin</a>
                     </li>
-                    <li> <a href="{{ url('#') }}"><i class="bi bi-circle"></i>User Pengguna</a>
+                    <li>
+                        <a href="{{ url('#') }}"><i class="bi bi-circle"></i>User Pengguna</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('dashboard.user_location.index') }}"><i class="bi bi-circle"></i>User
+                            Location</a>
                     </li>
                 </ul>
             </li>
