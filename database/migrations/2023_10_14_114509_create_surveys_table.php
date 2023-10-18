@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->uuid('id')->primary();
-
             $table->foreignUuid('category_id')->constrained('category_surveys')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
             $table->string('link_survey')->nullable();
-
             $table->json('polygon')->nullable();
-
             $table->longText('description')->nullable();
-
+            $table->string('poin')->nullable();
             $table->timestamps();
         });
     }

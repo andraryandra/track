@@ -82,74 +82,19 @@
             </li>
         @endcan
 
-        {{-- <li>
-            <a href="{{ route('dashboard.admin') }}"
-                class="{{ $active == 'dashboard' ? 'active-menu mm-active text-primary' : '' }}">
-                <div class="parent-icon"><i class="bi bi-house-fill"></i></div>
-                <div class="menu-title">Dashboard</div>
-            </a>
-        </li> --}}
-
-        {{-- @can('role-list')
-            <li>
-                <a href="{{ route('dashboard.roles.index') }}"
-                    class="{{ $active == 'roles-user' ? 'active-menu mm-active text-primary' : '' }}">
-                    <div class="parent-icon"><i class="bi bi-person-check-fill"></i>
-                    </div>
-                    <div class="menu-title">User Role Permission</div>
-                </a>
-            </li>
-        @endcan
-
-        @can('users-list')
-            <li>
-                <a href="javascript:;"
-                    class="has-arrow {{ $active == 'users' ? 'active-menu mm-active text-primary' : '' }}">
-                    <div class="parent-icon"><i class="bi bi-people-fill"></i>
-                    </div>
-                    <div class="menu-title">User</div>
-                </a>
-                <ul>
-                    <li> <a href="{{ route('dashboard.users.index') }}"
-                            class="{{ $active == 'users' ? 'active-menu mm-active text-primary' : '' }}"><i
-                                class="bi bi-circle"></i>All User</a>
-                    </li>
-                    <li> <a href="{{ route('dashboard.userAdmin.index') }}"><i class="bi bi-circle"></i>User Admin</a>
-                    </li>
-                    <li> <a href="{{ route('dashboard.userPengguna.index') }}"><i class="bi bi-circle"></i>User Pengguna</a>
-                    </li>
-                </ul>
-            </li>
-        @endcan
-
-        @can('category-list')
-            <li class="">
-                <a href="{{ route('dashboard.category.index') }}"
-                    class="{{ $active == 'category' ? 'active-menu mm-active text-primary' : '' }}">
-                    <div class="parent-icon"><i class="bi bi-tags-fill"></i>
-                    </div>
-                    <div class="menu-title">Categories</div>
-                </a>
-            </li>
-        @endcan --}}
-
-        {{-- @can('official-store-list')
-            <li class="">
-                <a href="{{ route('dashboard.official-store.index') }}"
-                    class="{{ $active == 'official-store' ? 'active-menu mm-active text-primary' : '' }}">
-                    <div class="parent-icon"><i class="bi bi-shop"></i>
-                    </div>
-                    <div class="menu-title">Offial Stores</div>
-                </a>
-            </li>
-        @endcan --}}
-
-
         <li>
             <a href="pages-pricing-tables.html">
                 <div class="parent-icon"><i class="bi bi-tags-fill"></i>
                 </div>
                 <div class="menu-title">Pricing Tables</div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('dashboard.survey_histories.index') }}">
+                <div class="parent-icon"><i class="bi bi-clock-history"></i></i>
+                </div>
+                <div class="menu-title">Survey Historie</div>
             </a>
         </li>
 

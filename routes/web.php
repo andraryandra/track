@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RoleController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Web\SurveyHistori\SurveyHistoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,5 +70,16 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
         Route::get('user_location/{id}/edit', 'edit')->name('user_location.edit');
         Route::put('user_location/{id}', 'update')->name('user_location.update');
         Route::delete('user_location/delete/{id}', 'destroy')->name('user_location.destroy');
+    });
+
+    //Survey History
+    Route::controller(SurveyHistoriController::class)->group(function () {
+        Route::get('survey_histories', 'index')->name('survey_histories.index');
+        Route::get('survey_histories/create', 'create')->name('survey_histories.create');
+        Route::post('survey_histories/store', 'store')->name('survey_histories.store');
+        Route::get('survey_histories/{id}', 'show')->name('survey_histories.show');
+        Route::get('survey_histories/{id}/edit', 'edit')->name('survey_histories.edit');
+        Route::put('survey_histories/{id}', 'update')->name('survey_histories.update');
+        Route::delete('survey_histories/delete/{id}', 'destroy')->name('survey_histories.destroy');
     });
 });

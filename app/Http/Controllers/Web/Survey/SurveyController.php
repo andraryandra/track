@@ -62,6 +62,7 @@ class SurveyController extends Controller
             'link_survey' => 'required',
             'polygon' => '',
             'description' => '',
+            'poin' => 'required',
         ]);
 
         try {

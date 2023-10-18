@@ -22,6 +22,7 @@ class Survey extends Model
         'link_survey',
         'polygon',
         'description',
+        'poin',
     ];
 
     public function categori()

@@ -45,6 +45,12 @@
                         </div>
 
                         <div class="my-2">
+                            <label for="poin" class="col-form-label">Poin Survey: <span style="color: red;">*</span></label>
+                            <input class="form-control" name="poin" type="number" id="poin" value="{{ old('poin') }}"
+                                placeholder="Masukkan link survey" required>
+                        </div>
+
+                        <div class="my-2">
                             <label for="description" class="col-form-label">Deskripsi Survey:</label>
                             <textarea class="form-control" name="description" id="description" placeholder="Masukkan deskripsi survey">{{ old('description') }}</textarea>
                         </div>
