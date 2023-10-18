@@ -5,6 +5,7 @@
         {{ __('Category') }}
     </h2>
 
+    @include('layouts.partials.alert-prompt.alert')
 
     <div class="card">
         <div class="card-body">

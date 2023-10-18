@@ -34,6 +34,12 @@ Route::prefix('v1')->group(function () {
     Route::get('/category', App\Http\Controllers\API\v1\CategorySurvey\CategoryApiSurveyController::class)->name('category');
     Route::get('/survey', [App\Http\Controllers\API\v1\Survey\SurveyApiController::class, 'index'])->name('survey');
 
+    Route::get('/user/location', [App\Http\Controllers\API\v1\UserLocation\UserLocationApiController::class, 'index'])->name('user.location');
+    Route::middleware('auth:api')->group(function () {
+        Route::get('/user/location/{id}', [App\Http\Controllers\API\v1\UserLocation\UserLocationApiController::class, 'AuthIndex'])->name('user.location');
+        Route::post('/user/location/store', [App\Http\Controllers\API\v1\UserLocation\UserLocationApiController::class, 'store'])->name('user.location.store');
+    });
+
     // Route::middleware('auth:api')->group(function () {
     // });
 });
