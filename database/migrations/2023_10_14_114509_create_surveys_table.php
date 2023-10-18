@@ -19,6 +19,7 @@ return new class extends Migration
             $table->json('polygon')->nullable();
             $table->longText('description')->nullable();
             $table->string('poin')->nullable();
+            $table->text('location')->nullable();
             $table->timestamps();
         });
     }

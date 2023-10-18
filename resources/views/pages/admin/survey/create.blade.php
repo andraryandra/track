@@ -51,6 +51,10 @@
                         </div>
 
                         <div class="my-2">
+                            <label for="location" class="col-form-label">Lokasi Survey:</label>
+                            <textarea class="form-control" name="location" id="location" placeholder="Masukkan Lokasi survey">{{ old('location') }}</textarea>
+                        </div>
+                        <div class="my-2">
                             <label for="description" class="col-form-label">Deskripsi Survey:</label>
                             <textarea class="form-control" name="description" id="description" placeholder="Masukkan deskripsi survey">{{ old('description') }}</textarea>
                         </div>

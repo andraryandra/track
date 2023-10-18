@@ -23,6 +23,7 @@ class Survey extends Model
         'polygon',
         'description',
         'poin',
+        'location',
     ];
 
     public function categori()

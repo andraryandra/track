@@ -12,49 +12,73 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ route('dashboard.survey.update', $data_survey->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="form-group">
-                            <label for="category_id" class="col-form-label">Kategori: <span
-                                    style="color: red;">*</span></label>
-                            <select class="form-control" name="category_id" id="category_id">
-                                <option disabled selected>Pilih kategori survey</option>
-                                @foreach ($categori as $category)
-                                    <option value="{{ $category->id }}"
-                                        @if ($category->id == $data_survey->category_id) selected
-                                                @else @endif>
-                                        {{ $category->name }}</option>
-                                @endforeach
-                            </select>
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{ route('dashboard.survey.update', $data_survey->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-group">
+                                    <div class="my-2">
+                                        <label for="category_id" class="col-form-label">Kategori: <span
+                                                style="color: red;">*</span></label>
+                                        <select class="form-control" name="category_id" id="category_id">
+                                            <option disabled selected>Pilih kategori survey</option>
+                                            @foreach ($categori as $category)
+                                                <option value="{{ $category->id }}"
+                                                    @if ($category->id == $data_survey->category_id) selected
+                                                        @else @endif>
+                                                    {{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
-                            <label for="name" class="col-form-label">Nama Survey: <span
-                                    style="color: red;">*</span></label>
-                            <input class="form-control" name="name" type="text" id="name"
-                                value="{{ $data_survey->name }}" placeholder="Masukkan Nama survey" required>
+                                    <div class="my-2">
+                                        <label for="name" class="col-form-label">Nama Survey: <span
+                                                style="color: red;">*</span></label>
+                                        <input class="form-control" name="name" type="text" id="name"
+                                            value="{{ $data_survey->name }}" placeholder="Masukkan Nama survey" required>
+                                    </div>
 
-                            <label for="link_survey" class="col-form-label">Link Survey: <span
-                                    style="color: red;">*</span></label>
-                            <input class="form-control" name="link_survey" type="text" id="link_survey"
-                                value="{{ $data_survey->link_survey }}" placeholder="Masukkan link survey" required>
+                                    <div class="my-2">
+                                        <label for="link_survey" class="col-form-label">Link Survey: <span
+                                                style="color: red;">*</span></label>
+                                        <input class="form-control" name="link_survey" type="text" id="link_survey"
+                                            value="{{ $data_survey->link_survey }}" placeholder="Masukkan link survey"
+                                            required>
+                                    </div>
 
-                            <label for="description" class="col-form-label">Deskripsi Survey:</label>
-                            <textarea class="form-control" name="description" id="description" placeholder="Masukkan deskripsi survey">{{ $data_survey->description }}</textarea>
+                                    <div class="my-2">
+                                        <label for="poin" class="col-form-label">Poin Survey: <span
+                                                style="color: red;">*</span></label>
+                                        <input class="form-control" name="poin" type="number" id="poin"
+                                            value="{{ $data_survey->poin }}" placeholder="Masukkan link survey" required>
+                                    </div>
+
+                                    <div class="my-2">
+                                        <label for="location" class="col-form-label">Lokasi Survey:</label>
+                                        <textarea class="form-control" name="location" id="location" placeholder="Masukkan Lokasi survey">{{ $data_survey->location }}</textarea>
+                                    </div>
+
+                                    <div class="my-2">
+                                        <label for="description" class="col-form-label">Deskripsi Survey:</label>
+                                        <textarea class="form-control" name="description" id="description" placeholder="Masukkan deskripsi survey">{{ $data_survey->description }}</textarea>
+                                    </div>
+                                    <div>
+                                        <label>The layer To Be Stored:</label>
+                                        <input id="polygon" type="text" class="form-control" name="polygon"
+                                            value="{{ $data_survey['polygon'] }}" readonly>
+                                    </div>
+                                    <div id="map" style="height: 300px;" class="mt-2"></div>
+
+                                    <div class="text-right mt-3">
+                                        <a class="btn btn-secondary"
+                                            href="{{ route('dashboard.survey.index') }}">Kembali</a>
+                                        <button type="submit" class="btn btn-primary bg-primary">Save</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-
-                        <div>
-                            <label>The layer To Be Stored:</label>
-                            <input id="polygon" type="text" class="form-control" name="polygon"
-                                value="{{ $data_survey['polygon'] }}" readonly>
-                        </div>
-                        <div id="map" style="height: 300px;" class="mt-2"></div>
-
-
-                        <div class="text-right mt-3">
-                            <a class="btn btn-secondary" href="{{ route('dashboard.survey.index') }}">Kembali</a>
-                            <button type="submit" class="btn btn-primary bg-primary">Save</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

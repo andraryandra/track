@@ -63,6 +63,7 @@ class SurveyController extends Controller
             'polygon' => '',
             'description' => '',
             'poin' => 'required',
+            'location' => 'required',
         ]);
 
         try {
