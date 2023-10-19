@@ -20,6 +20,8 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('poin')->nullable();
             $table->text('location')->nullable();
+            $table->date('start_date')->nullable(); // Tanggal mulai survei
+            $table->date('end_date')->nullable();   // Tanggal berakhir survei
             $table->timestamps();
         });
     }

@@ -54,9 +54,10 @@
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama Survey</th>
-                            <th scope="col">Nama Kategori</th>
                             <th scope="col">Link Survey</th>
                             <th scope="col">description</th>
+                            <th scope="col">start_date</th>
+                            <th scope="col">end_date</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -68,9 +69,10 @@
                             <tr>
                                 <th>{{ $noCategory++ }}</th>
                                 <td>{{ $survey->name }}</td>
-                                <td>{{ $survey->categori->name }}</td>
                                 <td>{{ $survey->link_survey }}</td>
                                 <td>{{ $survey->description }}</td>
+                                <td>{{ \Carbon\Carbon::parse($survey->start_date)->format('d-m-Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($survey->end_date)->format('d-m-Y') }}</td>
                                 <td>
                                     @can('survey-edit')
                                         <a href="{{ route('dashboard.survey.edit', ['id' => $survey->id]) }}"

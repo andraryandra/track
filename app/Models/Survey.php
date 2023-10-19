@@ -24,6 +24,8 @@ class Survey extends Model
         'description',
         'poin',
         'location',
+        'start_date',
+        'end_date',
     ];
 
     public function categori()

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\CategorySurvey;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
+use Carbon\Carbon;
 
 class SurveyController extends Controller
 {
@@ -51,7 +52,7 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
         if (Gate::denies('survey-list')) {
-            abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
+            abort(403);
         }
 
         $request->validate([
@@ -64,6 +65,8 @@ class SurveyController extends Controller
             'description' => '',
             'poin' => 'required',
             'location' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
         ]);
 
         try {
@@ -110,13 +113,19 @@ class SurveyController extends Controller
             abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
         }
 
+        // dd($request->all());
         $request->validate([
             'category_id' => 'required',
             'name' => 'required',
             'link_survey' => 'required',
-            'polygon' => 'nullable',
+            'poin' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'location' => 'required',
             'description' => 'nullable',
+            'polygon' => 'nullable',
         ]);
+        // dd($request);
 
         try {
             $category = Survey::findOrFail($id);
@@ -124,8 +133,12 @@ class SurveyController extends Controller
                 'category_id' => $request->category_id,
                 'name' => $request->name,
                 'link_survey' => $request->link_survey,
-                'polygon' => $request->polygon,
+                'poin' => $request->poin,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'location' => $request->location,
                 'description' => $request->description,
+                'polygon' => $request->polygon,
             ]);
 
             return redirect()->route('dashboard.survey.index')->with('success', 'Data survey berhasil diperbaharui.');
