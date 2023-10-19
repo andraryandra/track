@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\CategorySurvey;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class CategorySurveyController extends Controller
 {
@@ -41,15 +42,11 @@ class CategorySurveyController extends Controller
      */
     public function store(Request $request)
     {
-        // dd("oke");
-        // dd($request->all());
         $request->validate([
             'name' => 'required',
             'description' => 'required',
             'icon' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
-
-        // dd($request);
 
         try {
             $validatedData = $request->except('_token');
@@ -58,7 +55,7 @@ class CategorySurveyController extends Controller
             if ($request->hasFile('icon')) {
                 $icon = $request->file('icon');
                 $iconName = time() . '.' . $icon->getClientOriginalExtension();
-                $icon->move(public_path('uploads/icons'), $iconName); // Simpan gambar ke direktori tertentu
+                $icon->storeAs('uploads/icons', $iconName, 'public'); // Simpan gambar ke direktori tertentu
                 $validatedData['icon'] = 'uploads/icons/' . $iconName; // Simpan path gambar ke dalam kolom 'icon'
             }
 
@@ -68,6 +65,7 @@ class CategorySurveyController extends Controller
             return redirect()->back()->with('error', 'Data kategori gagal ditambah.');
         }
     }
+
 
 
 
@@ -92,8 +90,6 @@ class CategorySurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = CategorySurvey::findOrFail($id);
-
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -101,22 +97,29 @@ class CategorySurveyController extends Controller
         ]);
 
         try {
+            $category = CategorySurvey::findOrFail($id);
             $validatedData = $request->except('_token');
 
-            // Mengupdate gambar (icon) jika ada perubahan
+            // Mengupdate gambar (icon) jika ada file yang diunggah
             if ($request->hasFile('icon')) {
                 $icon = $request->file('icon');
                 $iconName = time() . '.' . $icon->getClientOriginalExtension();
-                $icon->move(public_path('uploads/icons'), $iconName); // Simpan gambar ke direktori tertentu
+                $icon->storeAs('uploads/icons', $iconName, 'public'); // Simpan gambar ke direktori tertentu
                 $validatedData['icon'] = 'uploads/icons/' . $iconName; // Simpan path gambar ke dalam kolom 'icon'
+
+                // Hapus gambar lama jika ada
+                if (file_exists(public_path($category->icon))) {
+                    unlink(public_path($category->icon));
+                }
             }
 
             $category->update($validatedData);
             return redirect()->back()->with('success', 'Data kategori diperbarui.');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Data kategori gagal diperbarui.');
+            return redirect()->back()->with('error', 'Gagal memperbarui data kategori.');
         }
     }
+
 
     // public function update(Request $request, $id)
     // {
@@ -150,10 +153,16 @@ class CategorySurveyController extends Controller
         if (Gate::denies('category-list')) {
             abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
         }
-        // dd("oke");
+
         try {
-            $asset = CategorySurvey::findOrFail($id);
-            $asset->delete();
+            $category = CategorySurvey::findOrFail($id);
+
+            // Hapus gambar terkait jika ada
+            if (Storage::exists($category->icon)) {
+                Storage::delete($category->icon);
+            }
+
+            $category->delete();
             return redirect()->back()->with('success', 'Data Kategori berhasil dihapus');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Data Kategori gagal dihapus');

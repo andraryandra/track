@@ -83,15 +83,8 @@
         @endcan
 
         <li>
-            <a href="pages-pricing-tables.html">
-                <div class="parent-icon"><i class="bi bi-tags-fill"></i>
-                </div>
-                <div class="menu-title">Pricing Tables</div>
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ route('dashboard.survey_histories.index') }}">
+            <a href="{{ route('dashboard.survey_histories.index') }}"
+                class="{{ $active == 'history-survey' ? 'active-menu mm-active text-primary' : '' }}">
                 <div class="parent-icon"><i class="bi bi-clock-history"></i></i>
                 </div>
                 <div class="menu-title">Survey Historie</div>

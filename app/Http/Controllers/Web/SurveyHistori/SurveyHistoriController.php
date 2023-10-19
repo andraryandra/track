@@ -18,7 +18,7 @@ class SurveyHistoriController extends Controller
         $data = [
             'Survey' => Survey::get(),
             'data_survey' => Survey::get(),
-            'active' => 'survey'
+            'active' => 'history-survey'
         ];
         return view('pages.admin.survey_histori.index', $data);
     }

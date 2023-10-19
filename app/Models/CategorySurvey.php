@@ -14,4 +14,9 @@ class CategorySurvey extends Model
         'description',
         'icon',
     ];
+
+    public function survey()
+    {
+        return $this->hasMany(Survey::class, 'category_id', 'id');
+    }
 }
