@@ -66,7 +66,7 @@
                                 <td>{{ $Categories->name }}</td>
                                 <td>{{ $Categories->description }}</td>
                                 <td>
-                                    <img src="{{ asset($Categories->icon) }}" alt="Icon Kategori" width="40">
+                                    <img src="{{ Storage::url($Categories->icon) }}" alt="Icon Kategori" width="40">
                                 </td>
                                 <td>
                                     @can('users-edit')

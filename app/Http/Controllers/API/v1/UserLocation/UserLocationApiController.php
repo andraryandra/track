@@ -9,7 +9,6 @@ class UserLocationApiController extends Controller
 {
     public function index()
     {
-
         $userLocation = \App\Models\UserLocation::with('user')->get();
 
         return response()->json([
@@ -29,7 +28,6 @@ class UserLocationApiController extends Controller
             'data'    => $userLocation
         ], 200);
     }
-
 
     public function store(Request $request)
     {
