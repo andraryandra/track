@@ -67,18 +67,6 @@
                                             value="{{ $data_survey->end_date }}" required>
                                     </div>
 
-                                    {{-- <div class="my-2">
-                                        <label for="start_date" class="col-form-label">Tanggal Mulai Survey:</label>
-                                        <input class="form-control" name="start_date" type="date" id="start_date"
-                                            value="{{ $data_survey->start_date }}" required>
-                                    </div>
-
-                                    <div class="my-2">
-                                        <label for="end_date" class="col-form-label">Tanggal Berakhir Survey:</label>
-                                        <input class="form-control" name="end_date" type="date" id="end_date"
-                                            value="{{ $data_survey->end_date }}" required>
-                                    </div> --}}
-
                                     <div class="my-2">
                                         <label for="location" class="col-form-label">Lokasi Survey:</label>
                                         <textarea class="form-control" name="location" id="location" placeholder="Masukkan Lokasi survey">{{ $data_survey->location }}</textarea>

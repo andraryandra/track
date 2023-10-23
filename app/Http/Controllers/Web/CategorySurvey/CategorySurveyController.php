@@ -46,7 +46,7 @@ class CategorySurveyController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'icon' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
+            'icon' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
 
         // dd($request);

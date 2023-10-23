@@ -2,35 +2,6 @@
 
 
 @section('admin')
-    {{-- <p>Halaman User Location</p> --}}
-    {{-- <div class="card">
-        <div class="card-body">
-            <div class="row align-items-center">
-                <div class="col-lg-3 col-xl-2">
-                    <a href="{{ route('dashboard.users.create') }}" class="btn btn-primary mb-3 mb-lg-0"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tambah"><i
-                            class="bi bi-plus-square-fill mx-1"></i>
-                        Tambah Lokasi
-                    </a>
-                </div>
-                <div class="col-lg-9 col-xl-10">
-                    <form class="float-lg-end">
-                        <div class="row row-cols-lg-auto g-2">
-                            <div class="col-12">
-                                <a href="javascript:;" class="btn btn-light mb-3 mb-lg-0"><i
-                                        class="bi bi-download"></i>Export</a>
-                            </div>
-                            <div class="col-12">
-                                <a href="javascript:;" class="btn btn-light mb-3 mb-lg-0"><i
-                                        class="bi bi-upload"></i>Import</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
@@ -98,46 +69,10 @@
                                     </div>
                                 </td>
                             </tr>
-                            {{-- <tr>
-                            </tr> --}}
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
-    {{-- @push('style')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-        <style>
-            #tbluser_filter {
-                display: none;
-            }
-        </style>
-    @endpush --}}
-
-    {{-- @push('script')
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-
-        <script>
-            $(document).ready(function() {
-                var table = new DataTable('#tbluser', {
-                    "language": {
-                        "search": "Search:",
-                        "searchPlaceholder": "Search your word..."
-                    },
-                    columnDefs: [{
-                        orderable: false,
-                        targets: 4
-                    }]
-                });
-
-                $('#searchInput').on('keyup', function() {
-                    table.search(this.value).draw();
-                });
-            });
-        </script>
-    @endpush --}}
 @endsection

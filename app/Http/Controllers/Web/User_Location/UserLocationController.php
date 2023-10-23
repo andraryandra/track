@@ -35,47 +35,18 @@ class UserLocationController extends Controller
     /**
      * Show the form for creating the resource.
      */
-    // public function create()
-    // {
-    //     if (Gate::denies('survey-list')) {
-    //         abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
-    //     }
-
-    //     $data = [
-    //         'Survey' => Survey::all(),
-    //         'categori' => CategorySurvey::all(),
-    //         'active' => 'survey'
-    //     ];
-
-    //     return view('pages.admin.survey.create', $data);
-    // }
+    public function create()
+    {
+        // dd("oke");
+    }
 
     /**
      * Store the newly created resource in storage.
      */
-    // public function store(Request $request)
-    // {
-    //     if (Gate::denies('survey-list')) {
-    //         abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
-    //     }
-
-    //     $request->validate([
-    //         'category_id' => 'required',
-    //         'name' => 'required',
-    //         'latitude' => '',
-    //         'longitude' => '',
-    //         'link_survey' => 'required',
-    //         'polygon' => '',
-    //         'description' => '',
-    //     ]);
-
-    //     try {
-    //         Survey::create($request->all());
-    //         return redirect()->route('dashboard.survey.index')->with('success', 'Data survey ditambah.');
-    //     } catch (\Throwable $th) {
-    //         return back()->withErrors(['error' => 'Data survey gagal ditambah.']);
-    //     }
-    // }
+    public function store(Request $request)
+    {
+        // dd("oke");
+    }
 
     /**
      * Display the resource.
@@ -84,13 +55,15 @@ class UserLocationController extends Controller
     {
         // dd("oke");
         $lokasi = UserLocation::findOrFail($id);
+        $survey = Survey::all();
+        $total_survey = Survey::count();
         $data = [
             'active' => 'user_location'
         ];
 
         return view(
             'pages.admin.menu_user.user_location.show',
-            compact('lokasi'),
+            compact('lokasi', 'survey', 'total_survey'),
             $data
         );
     }

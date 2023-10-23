@@ -14,13 +14,33 @@ class UserLocationTableSeeder extends Seeder
      */
     public function run(): void
     {
+        // $users = User::inRandomOrder()->take(2)->get();
+
+        // foreach ($users as $user) {
+        //     $latitude = rand(-90, 90) + (rand(0, 999) / 1000); // Koordinat acak antara -90 dan 90
+        //     $longitude = rand(-180, 180) + (rand(0, 999) / 1000); // Koordinat acak antara -180 dan 180
+
+        //     UserLocation::create([
+        //         'user_id' => $user->id,
+        //         'latitude' => $latitude,
+        //         'longitude' => $longitude,
+        //         'address' => 'Alamat Acak'
+        //     ]);
+        // }
         $randomUser = User::inRandomOrder()->first();
 
         UserLocation::create([
             'user_id' => $randomUser->id,
-            'latitude' => '48.858844',
-            'longitude' => '2.294351',
+            'latitude' => '-6.1755081',
+            'longitude' => '106.8267134',
             'address' => 'Eiffel Tower, Paris, France'
+        ]);
+
+        UserLocation::create([
+            'user_id' => $randomUser->id,
+            'latitude' => '-6.2692502',
+            'longitude' => '106.6571587',
+            'address' => 'Vila melati mas'
         ]);
     }
 }

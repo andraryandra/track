@@ -124,8 +124,7 @@
                         </div>
                         <div class="my-2">
                             <label for="icon" class="col-form-label">Gambar Kategori:</label>
-                            <input class="form-control" name="icon" type="file" id="icon" accept="image/*"
-                                required>
+                            <input class="form-control" name="icon" type="file" id="icon" accept="image/*">
                         </div>
                         <div class="my-2">
                             <label for="description" class="col-form-label">Deskripsi Kategori:</label>
@@ -165,7 +164,7 @@
                             <div class="my-2">
                                 <label for="icon" class="col-form-label">Gambar Kategori:</label>
                                 <input class="form-control" name="icon" type="file" id="icon"
-                                    accept="image/*" required>
+                                    accept="image/*">
                             </div>
                             <div class="my-2">
                                 <label for="description" class="col-form-label">Deskripsi Kategori:</label>
