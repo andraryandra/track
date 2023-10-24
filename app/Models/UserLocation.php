@@ -12,6 +12,7 @@ class UserLocation extends Model
 
     protected $fillable = [
         'user_id',
+        'survey_id',
         'latitude',
         'longitude',
         'address',
