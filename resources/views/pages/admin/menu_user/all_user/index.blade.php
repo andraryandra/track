@@ -33,15 +33,15 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-center">
-                <h5 class="mb-0">Customer Details</h5>
-                <div class="ms-auto position-relative">
+                <h5 class="mb-0">Details All Users</h5>
+                {{-- <div class="ms-auto position-relative">
                     <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i>
                     </div>
                     <input type="text" id="searchInput" class="form-control ps-5" placeholder="Search...">
-                </div>
+                </div> --}}
             </div>
             <div class="table-responsive mt-3">
-                <table id="tbluser" class="table align-middle" style="width: 100%">
+                <table id="example" class="table align-middle" style="width: 100%">
                     <thead class="table-secondary">
                         <tr>
                             <th>No</th>
@@ -132,7 +132,7 @@
 
         <script>
             $(document).ready(function() {
-                var table = new DataTable('#tbluser', {
+                var table = new DataTable('#example', {
                     "language": {
                         "search": "Search:",
                         "searchPlaceholder": "Search your word..."
