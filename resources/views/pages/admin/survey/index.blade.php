@@ -69,7 +69,7 @@
                             <tr>
                                 <th>{{ $noCategory++ }}</th>
                                 <td>{{ $survey->name }}</td>
-                                <td>{{ $survey->link_survey }}</td>
+                                <td>{{ Str::limit($survey->link_survey, 32) }}</td>
                                 <td>{{ $survey->description }}</td>
                                 <td>{{ \Carbon\Carbon::parse($survey->start_date)->format('d-m-Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($survey->end_date)->format('d-m-Y') }}</td>

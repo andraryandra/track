@@ -33,14 +33,18 @@ class UserLocationApiController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
+            'survey_id' => 'nullable',
             'latitude' => 'required',
             'longitude' => 'required',
+            'address' => 'nullable'
         ]);
 
         $userLocation = \App\Models\UserLocation::create([
             'user_id' => $request->user_id,
+            'survey_id' => $request->survey_id,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
+            'address' => $request->address
         ]);
 
         if ($userLocation) {

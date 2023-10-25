@@ -39,6 +39,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/user/location/store', [App\Http\Controllers\API\v1\UserLocation\UserLocationApiController::class, 'store'])->name('user.location.store');
     });
 
+    // Route::get('/category', [App\Http\Controllers\API\v1\CategorySurvey\CategoryApiSurveyController::class, 'all'])->name('category');
     Route::get('/category', [App\Http\Controllers\API\v1\CategorySurvey\CategoryApiSurveyController::class, 'index'])->name('category');
     Route::get('/category/{id}', [App\Http\Controllers\API\v1\CategorySurvey\CategoryApiSurveyController::class, 'show'])->name('category.show');
 
