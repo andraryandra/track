@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('survey__histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('survey_id')->constrained('surveys')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

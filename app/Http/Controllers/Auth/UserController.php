@@ -61,7 +61,7 @@ class UserController extends Controller
         }
         $roles = Role::pluck('name', 'name')->all();
 
-        return view('pages.admin.menu_user.create', [
+        return view('pages.admin.menu_user.all_user.create', [
             'roles' => $roles,
             'active' => 'users'
         ]);
@@ -141,7 +141,7 @@ class UserController extends Controller
         }
         $user = User::find($id);
 
-        return view('pages.admin.menu_user.show', [
+        return view('pages.admin.menu_user.all_user.show', [
             'user' => $user,
             'active' => 'users'
         ]);
@@ -175,7 +175,7 @@ class UserController extends Controller
 
 
 
-        return view('pages.admin.menu_user.edit', [
+        return view('pages.admin.menu_user.all_user.edit', [
             'user' => $user,
             'roles' => $roles,
             'userRole' => $userRole,

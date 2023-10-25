@@ -87,7 +87,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">Data Kosong</td>
+                                <td colspan="7" class="text-center">Data Kosong</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -97,36 +97,35 @@
     </div>
 
     @push('style')
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-        <style>
-            #tbluser_filter {
-                display: none;
-            }
-        </style>
     @endpush
 
-    @push('script')
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <style>
+        #tbluser_filter {
+            display: none;
+        }
+    </style>
 
-        <script>
-            $(document).ready(function() {
-                var table = new DataTable('#example', {
-                    "language": {
-                        "search": "Search:",
-                        "searchPlaceholder": "Search your word..."
-                    },
-                    columnDefs: [{
-                        orderable: false,
-                        targets: 4
-                    }]
-                });
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
-                $('#searchInput').on('keyup', function() {
-                    table.search(this.value).draw();
-                });
+    <script>
+        $(document).ready(function() {
+            var table = new DataTable('#example', {
+                "language": {
+                    "search": "Search:",
+                    "searchPlaceholder": "Search your word..."
+                },
+                columnDefs: [{
+                    orderable: false,
+                    targets: 4
+                }]
             });
-        </script>
-    @endpush
+
+            $('#searchInput').on('keyup', function() {
+                table.search(this.value).draw();
+            });
+        });
+    </script>
 @endsection

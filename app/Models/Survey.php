@@ -26,6 +26,7 @@ class Survey extends Model
         'location',
         'start_date',
         'end_date',
+        'visit_max',
     ];
 
     public function categori()
