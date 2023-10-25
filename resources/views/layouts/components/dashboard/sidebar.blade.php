@@ -56,7 +56,7 @@
                             Location</a>
                     </li>
                     <li>
-                        <a href="#"><i class="bi bi-circle"></i>User Poin</a>
+                        <a href="{{ route('dashboard.user_poin.index') }}"><i class="bi bi-circle"></i>User Poin</a>
                     </li>
                 </ul>
             </li>

@@ -42,11 +42,6 @@
         <div class="card-body">
             <div class="d-flex align-items-center">
                 <h5 class="mb-0">Survey Detail</h5>
-                {{-- <div class="ms-auto position-relative">
-                    <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i>
-                    </div>
-                    <input type="text" id="searchInput" class="form-control ps-5" placeholder="Search...">
-                </div> --}}
             </div>
             <div class="table-responsive mt-3">
                 <table id="example" class="table align-middle" style="width: 100%">
@@ -74,6 +69,10 @@
                                 <td>{{ \Carbon\Carbon::parse($survey->start_date)->format('d-m-Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($survey->end_date)->format('d-m-Y') }}</td>
                                 <td>
+                                    @can('survey-list')
+                                        <a href="{{ route('dashboard.survey.show', ['id' => $survey->id]) }}"
+                                            class="btn btn-success br-info">Show</a>
+                                    @endcan
                                     @can('survey-edit')
                                         <a href="{{ route('dashboard.survey.edit', ['id' => $survey->id]) }}"
                                             class="btn btn-info br-info">Edit</a>

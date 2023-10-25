@@ -22,12 +22,12 @@ class UserPoinController extends Controller
 
         $lokasi = UserLocation::all();
         $data = [
-            'active' => 'user_location'
+            'active' => 'user_location',
+            'lokasi' => UserLocation::all(),
         ];
 
         return view(
-            'pages.admin.menu_user.user_location.index',
-            compact('lokasi'),
+            'pages.admin.menu_user.user_poin.index',
             $data
         );
     }

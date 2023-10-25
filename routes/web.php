@@ -73,7 +73,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
     });
 
     //Survey History
-    Route::controller(SurveyHistoriController::class)->group(function () {
+    Route::controller(\App\Http\Controllers\Web\SurveyHistori\SurveyHistoriController::class)->group(function () {
         Route::get('survey_histories', 'index')->name('survey_histories.index');
         Route::get('survey_histories/create', 'create')->name('survey_histories.create');
         Route::post('survey_histories/store', 'store')->name('survey_histories.store');
@@ -81,5 +81,16 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
         Route::get('survey_histories/{id}/edit', 'edit')->name('survey_histories.edit');
         Route::put('survey_histories/{id}', 'update')->name('survey_histories.update');
         Route::delete('survey_histories/delete/{id}', 'destroy')->name('survey_histories.destroy');
+    });
+
+    //User Poin
+    Route::controller(\App\Http\Controllers\Web\User_Poin\UserPoinController::class)->group(function () {
+        Route::get('user_poin', 'index')->name('user_poin.index');
+        Route::get('user_poin/create', 'create')->name('user_poin.create');
+        Route::post('user_poin/store', 'store')->name('user_poin.store');
+        Route::get('user_poin/{id}', 'show')->name('user_poin.show');
+        Route::get('user_poin/{id}/edit', 'edit')->name('user_poin.edit');
+        Route::put('user_poin/{id}', 'update')->name('user_poin.update');
+        Route::delete('user_poin/delete/{id}', 'destroy')->name('user_poin.destroy');
     });
 });

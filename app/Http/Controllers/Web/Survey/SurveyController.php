@@ -82,7 +82,16 @@ class SurveyController extends Controller
      */
     public function show()
     {
-        //
+        if (Gate::denies('survey-list')) {
+            abort(403);
+        }
+
+        $data = [
+            'active' => 'survey',
+            'data_survey' => Survey::get(),
+        ];
+
+        return view('pages.admin.survey.show', $data);
     }
 
     /**
