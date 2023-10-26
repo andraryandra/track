@@ -25,7 +25,10 @@
                                 <td>{{ $novisit++ }}</td>
                                 <td>Gunawan</td>
                                 <td>6</td>
-                                <td>1 klik survey</td>
+                                <td>
+                                    <span class="badge badge-success"
+                                        style="background-color: #28a745; color: #fff; padding: 5px 10px; border-radius: 4px;">Sudah</span>
+                                </td>
                             </tr>
                         @empty
                             <tr>
