@@ -17,10 +17,6 @@ use App\Http\Controllers\Web\SurveyHistori\SurveyHistoriController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -38,6 +34,24 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
 
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+
+    //Halaman User Admin
+    Route::controller(\App\Http\Controllers\Web\User_Admin\UserAdminController::class)->group(function () {
+        Route::get('userAdmin', 'index')->name('userAdmin.index');
+        Route::get('userAdmin/{id}', 'show')->name('userAdmin.show');
+        Route::get('userAdmin/{id}/edit', 'edit')->name('userAdmin.edit');
+        Route::patch('userAdmin/{id}', 'update')->name('userAdmin.update');
+        Route::delete('userAdmin/delete/{id}', 'destroy')->name('userAdmin.destroy');
+    });
+
+    //Halaman User Pengguna
+    Route::controller(\App\Http\Controllers\Web\User_Pengguna\UserPenggunaController::class)->group(function () {
+        Route::get('userPengguna', 'index')->name('userPengguna.index');
+        Route::get('userPengguna/{id}', 'show')->name('userPengguna.show');
+        Route::get('userPengguna/{id}/edit', 'edit')->name('userPengguna.edit');
+        Route::put('userPengguna/{id}', 'update')->name('userPengguna.update');
+        Route::delete('userPengguna/delete/{id}', 'destroy')->name('userPengguna.destroy');
+    });
 
     //Kategori Survey
     Route::controller(\App\Http\Controllers\Web\CategorySurvey\CategorySurveyController::class)->group(function () {
@@ -64,12 +78,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
     //User Location
     Route::controller(\App\Http\Controllers\Web\User_Location\UserLocationController::class)->group(function () {
         Route::get('user_location', 'index')->name('user_location.index');
-        Route::get('user_location/create', 'create')->name('user_location.create');
-        Route::post('user_location/store', 'store')->name('user_location.store');
         Route::get('user_location/{id}', 'show')->name('user_location.show');
-        Route::get('user_location/{id}/edit', 'edit')->name('user_location.edit');
-        Route::put('user_location/{id}', 'update')->name('user_location.update');
-        Route::delete('user_location/delete/{id}', 'destroy')->name('user_location.destroy');
     });
 
     //Survey History
@@ -92,5 +101,10 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
         Route::get('user_poin/{id}/edit', 'edit')->name('user_poin.edit');
         Route::put('user_poin/{id}', 'update')->name('user_poin.update');
         Route::delete('user_poin/delete/{id}', 'destroy')->name('user_poin.destroy');
+    });
+
+    Route::controller(\App\Http\Controllers\Web\Report\ReportController::class)->group(function () {
+        Route::get('report/poin', 'report_poin')->name('report.report_poin');
+        Route::get('report/survey', 'report_survey')->name('report.report_survey');
     });
 });

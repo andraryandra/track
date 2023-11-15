@@ -11,20 +11,49 @@
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead class="table-secondary">
                         <tr>
-                            <th>No</th>
+                            <th width="60px">No</th>
                             <th>Nama</th>
+                            <th>Email</th>
                             <th>Total Poin</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php
                             $nopoin = 1;
+                            $userPoinSum = [];
+
+                            foreach ($poins as $UserPoin) {
+                                $userId = $UserPoin->user->id;
+
+                                // Jika user_id belum ada dalam array $userPoinSum, tambahkan dengan nilai awal poin
+                                if (!isset($userPoinSum[$userId])) {
+                                    $userPoinSum[$userId] = [
+                                        'name' => $UserPoin->user->name,
+                                        'email' => $UserPoin->user->email,
+                                        'total_poin' => $UserPoin->poin,
+                                    ];
+                                } else {
+                                    // Jika user_id sudah ada, tambahkan poin ke total_poin
+                                    $userPoinSum[$userId]['total_poin'] += $UserPoin->poin;
+                                }
+                            }
                         @endphp
-                        <tr>
-                            <td>{{ $nopoin++ }}</td>
-                            <td>Gunawa</td>
-                            <td>10</td>
-                        </tr>
+
+                        @foreach ($userPoinSum as $userId => $userData)
+                            <tr>
+                                <td class="text-center">{{ $nopoin++ }}</td>
+                                <td>{{ $userData['name'] }}</td>
+                                <td>{{ $userData['email'] }}</td>
+                                <td>{{ $userData['total_poin'] }}</td>
+                            </tr>
+                        @endforeach
+
+                        @if (empty($userPoinSum))
+                            <tr>
+                                <td colspan="3" class="text-center">Data Kosong</td>
+                            </tr>
+                        @endif
+
                     </tbody>
                 </table>
             </div>

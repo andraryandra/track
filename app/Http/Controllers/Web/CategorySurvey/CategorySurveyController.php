@@ -120,31 +120,6 @@ class CategorySurveyController extends Controller
         }
     }
 
-
-    // public function update(Request $request, $id)
-    // {
-    //     if (Gate::denies('category-list')) {
-    //         abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
-    //     }
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'description' => 'required',
-    //     ]);
-
-    //     try {
-    //         $category = CategorySurvey::findOrFail($id);
-    //         $category->update([
-    //             'name' => $request->name,
-    //             'description' => $request->description,
-    //         ]);
-
-    //         return redirect()->back()->with('success', 'Data Kategori berhasil diperbaharui');
-    //     } catch (\Throwable $th) {
-    //         return redirect()->back()->with('error', 'Data Kategori gagal diperbaharui');
-    //     }
-    // }
-
-
     /**
      * Remove the resource from storage.
      */

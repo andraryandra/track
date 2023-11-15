@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\UserSeerder;
+use Database\Seeders\UserPoinSeeder;
 use Database\Seeders\CreateAdminUserSeeder;
 use Database\Seeders\PermissionTableSeeder;
 use Database\Seeders\UserLocationTableSeeder;
@@ -31,6 +32,10 @@ class DatabaseSeeder extends Seeder
             PermissionTableSeeder::class,
             CreateAdminUserSeeder::class,
             UserLocationTableSeeder::class,
+            UserPoinSeeder::class,
+            CategorySurveySeeder::class,
+            SurveySeeder::class,
+            SurveyHistoriSeeder::class,
         ]);
     }
 }

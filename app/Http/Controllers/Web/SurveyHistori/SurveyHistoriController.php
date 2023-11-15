@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\CategorySurvey;
 use App\Http\Controllers\Controller;
+use App\Models\Survey_Histories;
 use Illuminate\Support\Facades\Gate;
 
 class SurveyHistoriController extends Controller
@@ -14,10 +15,10 @@ class SurveyHistoriController extends Controller
 
     public function index(): View
     {
-
+        // dd("oke");
         $data = [
             'Survey' => Survey::get(),
-            'data_survey' => Survey::get(),
+            'histori' => Survey_Histories::get(),
             'active' => 'history-survey'
         ];
         return view('pages.admin.survey_histori.index', $data);

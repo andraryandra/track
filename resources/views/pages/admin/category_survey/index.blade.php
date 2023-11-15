@@ -17,20 +17,6 @@
                         Tambah data
                     </button>
                 </div>
-                <div class="col-lg-9 col-xl-10">
-                    <form class="float-lg-end">
-                        <div class="row row-cols-lg-auto g-2">
-                            <div class="col-12">
-                                <a href="javascript:;" class="btn btn-light mb-3 mb-lg-0"><i
-                                        class="bi bi-download"></i>Export</a>
-                            </div>
-                            <div class="col-12">
-                                <a href="javascript:;" class="btn btn-light mb-3 mb-lg-0"><i
-                                        class="bi bi-upload"></i>Import</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
@@ -39,11 +25,6 @@
         <div class="card-body">
             <div class="d-flex align-items-center">
                 <h5 class="mb-0">Category Detail</h5>
-                {{-- <div class="ms-auto position-relative">
-                    <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i>
-                    </div>
-                    <input type="text" id="searchInput" class="form-control ps-5" placeholder="Search...">
-                </div> --}}
             </div>
             <div class="table-responsive mt-3">
                 <table id="example" class="table align-middle" style="width: 100%">
@@ -97,7 +78,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="text-center">Data Kosong</td>
+                                <td colspan="5" class="text-center">Data Kosong</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -141,8 +122,8 @@
 
     <!-- Modal edit data-->
     @foreach ($Categori as $Categories)
-        <div class="modal fade" id="staticBackdrop{{ $Categories->id }}" data-bs-backdrop="static"
-            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="staticBackdrop{{ $Categories->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

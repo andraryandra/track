@@ -12,11 +12,6 @@
         <div class="card-body">
             <div class="d-flex align-items-center">
                 <h5 class="mb-0">Survey History</h5>
-                {{-- <div class="ms-auto position-relative">
-                    <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i>
-                    </div>
-                    <input type="text" id="searchInput" class="form-control ps-5" placeholder="Search...">
-                </div> --}}
             </div>
             <div class="table-responsive mt-3">
                 <table id="example" class="table align-middle" style="width: 100%">
@@ -25,29 +20,31 @@
                             <th scope="col">No</th>
                             <th scope="col">Name Survey</th>
                             <th scope="col">Name User</th>
-                            <th scope="col">question</th>
-                            <th scope="col">date</th>
+                            <th scope="col">Link</th>
+                            <th scope="col">Tanggal</th>
                             <th scope="col">Poin</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Hepermart</td>
-                            <td>Gunawan</td>
-                            <td>Banyak Pertanyaan</td>
-                            <td>18-10-2023</td>
-                            <td>10</td>
-                            <td>banyak deskripsi singkat</td>
-                            <td>
-                                <a href="#" class="text-primary mx-1" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" title="Lihat">
-                                    <i class="bi bi-eye-fill"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        @php
+                            $nohistori = 1;
+                        @endphp
+                        @forelse ($histori as $data_SurveyHistori)
+                            <tr>
+                                <td>{{ $nohistori++ }}</td>
+                                <td>{{ $data_SurveyHistori->survey->name }}</td>
+                                <td>{{ $data_SurveyHistori->user->name }}</td>
+                                <td>{{ $data_SurveyHistori->survey->link_survey }}</td>
+                                <td>{{ \Carbon\Carbon::parse($data_SurveyHistori->click_date)->format('d-m-Y') }}</td>
+                                <td>{{ $data_SurveyHistori->survey->poin }}</td>
+                                <td><span class="badge badge-success">Selesai</span></td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="text-center">Data Kosong</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

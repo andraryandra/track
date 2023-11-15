@@ -46,10 +46,10 @@
                                 class="bi bi-circle"></i>All User</a>
                     </li>
                     <li>
-                        <a href="{{ url('#') }}"><i class="bi bi-circle"></i>User Admin</a>
+                        <a href="{{ route('dashboard.userAdmin.index') }}"><i class="bi bi-circle"></i>User Admin</a>
                     </li>
                     <li>
-                        <a href="{{ url('#') }}"><i class="bi bi-circle"></i>User Pengguna</a>
+                        <a href="{{ route('dashboard.userPengguna.index') }}"><i class="bi bi-circle"></i>User Pengguna</a>
                     </li>
                     <li>
                         <a href="{{ route('dashboard.user_location.index') }}"><i class="bi bi-circle"></i>User
@@ -73,7 +73,6 @@
             </li>
         @endcan
 
-
         @can('survey-list')
             <li>
                 <a href="javascript:;"
@@ -95,6 +94,25 @@
                 </ul>
             </li>
         @endcan
+
+        <li>
+            <a href="javascript:;"
+                class="has-arrow {{ $active == 'report' ? 'active-menu mm-active text-primary' : '' }}">
+                <div class="parent-icon"><i class="bi bi-file-earmark-text"></i>
+                </div>
+                <div class="menu-title">Report</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('dashboard.report.report_survey') }}">
+                        <i class="bi bi-circle"></i>Report Survey</a>
+                </li>
+                <li>
+                    <a href="{{ route('dashboard.report.report_poin') }}"><i class="bi bi-circle">
+                        </i>Report User Point</a>
+                </li>
+            </ul>
+        </li>
 
         <li class="menu-label">Others</li>
         <li>

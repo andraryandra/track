@@ -34,11 +34,6 @@
         <div class="card-body">
             <div class="d-flex align-items-center">
                 <h5 class="mb-0">Details All Users</h5>
-                {{-- <div class="ms-auto position-relative">
-                    <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i>
-                    </div>
-                    <input type="text" id="searchInput" class="form-control ps-5" placeholder="Search...">
-                </div> --}}
             </div>
             <div class="table-responsive mt-3">
                 <table id="example" class="table align-middle" style="width: 100%">
@@ -52,8 +47,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($data->chunk(10) as $chunk) --}}
-                        {{-- @foreach ($chunk as $key => $user) --}}
                         @foreach ($data as $key => $user)
                             <tr>
                                 <td>
@@ -107,7 +100,6 @@
                                 </td>
                             </tr>
                         @endforeach
-                        {{-- @endforeach --}}
                     </tbody>
                 </table>
             </div>

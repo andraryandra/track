@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Web\User_Poin;
 
+// use UserPoin;
 use App\Models\User;
 use App\Models\Survey;
+use App\Models\UserPoin;
 use Illuminate\View\View;
 use App\Models\UserLocation;
 use Illuminate\Http\Request;
@@ -20,8 +22,9 @@ class UserPoinController extends Controller
             abort(403); // Tampilkan halaman 403 Forbidden jika tidak memiliki izin.
         }
 
-        $lokasi = UserLocation::all();
+        // $lokasi = UserLocation::all();
         $data = [
+            'poins' => UserPoin::get(),
             'active' => 'user_location',
             'lokasi' => UserLocation::all(),
         ];

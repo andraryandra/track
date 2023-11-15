@@ -12,10 +12,12 @@ class UserSeerder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::create([
-            'name' => 'user',
-            'email' => 'user@gmail.com',
-            'password' => bcrypt('password'),
-        ]);
+        for ($i = 1; $i <= 10; $i++) {
+            \App\Models\User::create([
+                'name' => 'user' . $i,
+                'email' => 'user' . $i . '@gmail.com',
+                'password' => bcrypt('password'),
+            ]);
+        }
     }
 }
