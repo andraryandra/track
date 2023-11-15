@@ -9,7 +9,8 @@
     <div class="card">
         <div class="card-body">
             <a href="javascript:;" class="btn btn-light mb-3 mb-lg-0"><i class="bi bi-download"></i>PDF</a>
-            <a href="javascript:;" class="btn btn-light mb-3 mb-lg-0"><i class="bi bi-download"></i>Exel</a>
+            <a href="{{ route('dashboard.reportPoin.export_ReportPoin') }}" class="btn btn-light mb-3 mb-lg-0"><i
+                    class="bi bi-download"></i>Exel</a>
         </div>
     </div>
     <div class="card">

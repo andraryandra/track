@@ -106,5 +106,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
     Route::controller(\App\Http\Controllers\Web\Report\ReportController::class)->group(function () {
         Route::get('report/poin', 'report_poin')->name('report.report_poin');
         Route::get('report/survey', 'report_survey')->name('report.report_survey');
+        Route::get('reportSurvey/export', 'export_ReportSurvey')->name('reportSurvey.export_ReportSurvey');
+        Route::get('reportPoin/export', 'export_ReportPoin')->name('reportPoin.export_ReportPoin');
     });
 });

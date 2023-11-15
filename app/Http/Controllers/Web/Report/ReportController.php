@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Web\Report;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Survey_Histories;
+use App\Exports\ReportPoinExport;
+use App\Exports\ReportSurveyExport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
@@ -26,8 +29,12 @@ class ReportController extends Controller
         return view('pages.admin.report.report_survey', $data);
     }
 
-    // public function export_ReportSurvey()
-    // {
-    //     return Excel::download(new PetternLotPetiExport, 'PATTERN LOT PETI.xlsx');
-    // }
+    public function export_ReportSurvey()
+    {
+        return Excel::download(new ReportSurveyExport, 'Report Survey.xlsx');
+    }
+    public function export_ReportPoin()
+    {
+        return Excel::download(new ReportPoinExport, 'Report Poin.xlsx');
+    }
 }
