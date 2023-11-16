@@ -8,7 +8,8 @@
     @include('layouts.partials.alert-prompt.alert')
     <div class="card">
         <div class="card-body">
-            <a href="javascript:;" class="btn btn-light mb-3 mb-lg-0"><i class="bi bi-download"></i>PDF</a>
+            <a href="{{ route('dashboard.reportSurvey.generatePDFSurvey') }}" class="btn btn-light mb-3 mb-lg-0"><i
+                    class="bi bi-download"></i>PDF</a>
             <a href="{{ route('dashboard.reportSurvey.export_ReportSurvey') }}" class="btn btn-light mb-3 mb-lg-0"><i
                     class="bi bi-download"></i>Exel</a>
         </div>
